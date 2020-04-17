@@ -4,9 +4,17 @@
 #include <unistd.h>
 #include "screen.h"
 #include "comm.h"
+#include "sound.h"
+
 
 int main(void)
 {
+	 getchar();
+    FILE *fp = fopen("test.wav", "r"); // open the wav file in read-only
+    WAVheader h = readwavhdr(fp);
+    fclose(fp);
+    displaywavhdr(h);
+
    Position cur = getscreensize();   //get screen size
    char postdata[100];
    sprintf(postdata, "row=%d&col=%d&id=e1900313", cur.row , cur.col);
@@ -77,7 +85,7 @@ int main(void)
    drawbar(50, 30);
 
    getchar();
-   resetcolors();
+ /*  resetcolors();
    clearscreen();
-   printf("This line is back to default color\n");
+   printf("This line is back to default color\n");*/
 }

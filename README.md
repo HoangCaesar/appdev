@@ -15,12 +15,15 @@ List of Contents
 1. Configuration instructions
 	In this section we should give users information of how to configure
 	operating ssystem, software environment, libraries,etc. to run this application
+
 2. Installation instructions
 	In this section we should give users information of how to install this application, what files not included in this package should be added.
 	What command/operation should be used to install this application.
+
 3. Operating instructions
 	In this section we should give users information of how to run this application,
 	 e.g., what command arguments can be given and what do they mean.	 
+
 4.File manifest
 	We should list all the files of this application at here with short descriptions.
 
