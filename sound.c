@@ -2,12 +2,13 @@
 #include "sound.h"
 #include <math.h>
 #include "screen.h"
+#include "comm.h"
 
 //function definitions
 WAVheader readwavhdr(FILE *fp){
 	WAVheader myh;
 	fread(&myh, sizeof(myh), 1, fp);
-	return myh; 
+	return myh;
 }
 
 void displaywavhdr(WAVheader h){
@@ -34,7 +35,8 @@ void wavdata(WAVheader h, FILE *fp){
 	// our sound file uses sample rate of 16000, for 5 seconds, there are
 	// 5*16000 = 80000 samples, we want to display them into 160 bars
 	short samples[500];		// to read 500 samples from wav file
-	int peaks = 0, flag = 0;	// 1st value is to count, 2nd value is to show that you are in a peak
+	int peaks = 0, flag = 0, max = 70;	// 1st value is to count, 2nd value is to show that you are in a peak
+	char postData[100];
 
 	for(int i = 0; i<160; i++){
 		fread(samples, sizeof(samples), 1, fp);
@@ -47,6 +49,8 @@ void wavdata(WAVheader h, FILE *fp){
 		printf("db[%d] = %f\n", i+1, 20*log10(re));
 #else
 		// display for re value
+		if( (int)20*log10(re) > max )
+			max = (int)20*log10(re);
 		if( (int)20*log10(re) > 70){
 			 setfgcolor(RED);
 			if(flag == 0){
@@ -65,6 +69,8 @@ void wavdata(WAVheader h, FILE *fp){
 	gotoXY(1,1); printf("Sample Rate: %d\n", h.sampleRate);
 	gotoXY(1, 75); printf("Duration: %f s\n", (float)h.subchunk2Size/h.byteRate);
 	gotoXY(1, 140); printf("Peaks: %d\n", peaks);
-
+	gotoXY(2, 1); printf("Maximum: %d\n", max);
+	sprintf(postData, "peaks=%d&max=%d\n", peaks, max);
+	sendpost(URL, postData);
 }
 // end of file

@@ -36,6 +36,18 @@ List of Contents
 	testscreen.c	contains data for our testing of screen.c.
 	testcurl.c		contains data for our testing of comm.c
 	makefile		contains results from using the "make" processing tool.
+	sound.c			contains sound manipulation functions( read sound samples from open file,
+							 calculate decibel value, etc...).
+	sound.h			contains constant definitions and function declarations of sound.c.
+	sound.wav		contains sound samples.
+	test.wav		contains sound samples.
+	test.php		contains php functions.
 	
-5. Copyright
+5.Contact information
+	My name: Nguyen Hoang
+	School: Vaasa university of applied sciences.
+	Number phone: 0911367398
+	Address: C35 22-24 Ahventie, 65200 Vaasa
+
+   ** Copyright**
 	This application follows GPLv2 coppyright.
