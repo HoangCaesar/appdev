@@ -39,8 +39,6 @@ List of Contents
 	sound.c			contains sound manipulation functions( read sound samples from open file,
 							 calculate decibel value, etc...).
 	sound.h			contains constant definitions and function declarations of sound.c.
-	sound.wav		contains sound samples.
-	test.wav		contains sound samples.
 	test.php		contains php functions.
 	
 5.Contact information
