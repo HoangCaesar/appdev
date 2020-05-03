@@ -1,5 +1,6 @@
 // this header file contains constant definitions and function declarations
 // for processing sound, specifically .wav.files.
+// #define SDEBUG
 
 typedef struct{
 	char chunkID[4];		//shouldbe always "RIFF"
@@ -8,7 +9,7 @@ typedef struct{
 	char subchunk1ID[4];	//should be always "fmt "
 	int subchunk1Size;		//should be 16 for PCM data
 	short audioFormat;		//should be 1 for Linear sample
-	short numChannels;	//1 for mono, 2 for stereo
+	short numChannels;		//1 for mono, 2 for stereo
 	int sampleRate;			//could be 44100, 16000, 8000
 	int byteRate;			//can be calculated
 	short blockAlign;		//how many bytes in one block
@@ -19,7 +20,8 @@ typedef struct{
 
 
 // function delarations
-WAVheader readwavhdr(FILE *);
-void displaywavhdr(WAVheader);
+WAVheader readwavhdr(FILE *fp);
+void displaywavhdr(WAVheader h);
+void wavdata(WAVheader h, FILE *fp);
 
 

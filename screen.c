@@ -50,9 +50,9 @@ void drawbar(int col, int height)
 {
  int i;
  for(i=1; i<=height; i++){
-     gotoXY(i, col);
+     gotoXY(35-i, col);
 #ifdef UNICODE    // following codes are in conditional compilation
-     printf("%s", BOX);
+     printf("%s", BAR);
 #else
      printf("%c", '#');
 #endif

@@ -9,11 +9,13 @@
 
 int main(void)
 {
-	 getchar();
+	getchar();
     FILE *fp = fopen("test.wav", "r"); // open the wav file in read-only
     WAVheader h = readwavhdr(fp);
-    fclose(fp);
     displaywavhdr(h);
+	wavdata(h, fp);	//to calculate dB values and display them as a barchart
+    fclose(fp);
+
 
    Position cur = getscreensize();   //get screen size
    char postdata[100];
@@ -73,7 +75,7 @@ int main(void)
 		printf("HELLO\n");
 		usleep(500000);
 	}*/
-	
+
 
 
   // printf("The following message will be in YELLOW color\n");
